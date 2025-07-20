@@ -33,11 +33,7 @@ const InitialLayout = () => {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-  return (
-    <Stack>
-      <Stack.Screen name="index" />
-    </Stack>
-  );
+  return <Slot/>
 };
 
 export default function RootLayout() {
