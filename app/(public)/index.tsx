@@ -1,50 +1,132 @@
-import { Colors } from "@/app-example/constants/Colors";
-import { useSSO } from "@clerk/clerk-expo";
-import { DMSans_700Bold, useFonts } from "@expo-google-fonts/dm-sans";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import {useSSO} from "@clerk/clerk-expo";
+import {DMSans_700Bold, useFonts} from "@expo-google-fonts/dm-sans";
+import {Text, View, StyleSheet, Image, ScrollView, TouchableOpacity} from "react-native";
+import {Colors} from "react-native/Libraries/NewAppScreen";
+import {Ionicons} from "@expo/vector-icons";
 
 
 export default function Index() {
-    const [fontsLoaded] = useFonts({
+    const [ontsLoaded] = useFonts({
         DMSans_700Bold,
     });
 
-    const { startOAuthFlow } = useSSO();
-    const { startOAuthFlow: startGoogleOAuthFlow } = useSSO();
+    const {startOAuthFlow} = useSSO();
+    const {startOAuthFlow: startGoogleOAuthFlow} = useSSO();
 
 
-  return (
-    <View style={style.container}>
-      <Image
-        source={require('@/assets/images/login.jpeg')}
-        style={style.loginImage}
-      />
-      <ScrollView>
-  <Text style = {style.title}>How would you like to use Threads?</Text>
-      </ScrollView>
-    
-    </View>
-  );
+    return (
+        <View style={style.container}>
+            <Image
+                source={require('@/assets/images/login.jpeg')}
+                style={style.loginImage}
+            />
+            <ScrollView>
+
+                <Text style={style.title}>How would you like to use Threads?</Text>
+                <View style={style.buttonContainer}>
+                    <TouchableOpacity style={style.loginButton}>
+                        <View style={style.loginButtonContent}>
+                            <Image
+                                source={require('@/assets/images/instagram_icon.png')}
+                                style={style.loginButtonIcon}></Image>
+                            <Text style={style.loginButtonText}>Continue with Instagram</Text>
+                            <Ionicons name={"chevron-forward"} size={24} color={Colors.border}/>
+                        </View>
+                        <Text style={style.loginButtonSubtitle}> you can log with instagram. more easy and secure way. more easy and secure way</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={style.loginButton}>
+                        <View style={style.loginButtonContent}>
+                            <Text style={style.loginButtonText}>Continue with Google</Text>
+                            <Ionicons name={"chevron-forward"} size={24} color={Colors.border}/>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={style.loginButton}>
+                        <View style={style.loginButtonContent}>
+                            <Image
+                                source={require('@/assets/images/instagram_icon.png')}
+                                style={style.loginButtonIcon}></Image>
+                            <Text style={style.loginButtonText}>Use without Profile</Text>
+                            <Ionicons name={"chevron-forward"} size={24} color={Colors.border}/>
+                        </View>
+                        <Text style={style.loginButtonSubtitle}> you can use threads without profile go ahead   </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={style.swithButton}>
+                        <Text>Switch Account</Text>
+                    </TouchableOpacity>
+                </View>
+
+
+            </ScrollView>
+
+        </View>
+    );
 }
 
 
 const style = StyleSheet.create({
-  container : {
-    flex:1,
-    gap:20,
-    alignItems:'center',
-    backgroundColor:Colors.light.background
-  },
-  loginImage:{
-    width: '100%',
-    height:350
-  },
+    container: {
+        flex: 1,
+        gap: 20,
+        alignItems: 'center',
+        backgroundColor: Colors.background,
 
-  title:{
-    fontFamily:'DMSans_700Bold',
-    fontSize:17
-   
-  }
-  
+    },
+    loginImage: {
+        width: '100%',
+        height: 350
+    },
+
+    title: {
+        fontFamily: 'DMSans_700Bold',
+        fontSize: 17,
+        textAlign: 'center',
+        marginTop: 10,
+
+    },
+    loginButton: {
+        backgroundColor: '#FFF',
+        padding: 12,
+        borderRadius: 10,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: Colors.border,
+    },
+
+    buttonContainer: {
+        gap: 10,
+        marginHorizontal: 50,
+    },
+    loginButtonContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10
+    },
+    loginButtonIcon: {
+        width: 40,
+        height: 40
+    },
+    loginButtonText: {
+        fontFamily: 'DMSans_700Bold',
+        fontSize: 14,
+        flex: 1,
+    },
+    loginButtonSubtitle: {
+        fontFamily: 'DMSans_700Bold',
+        fontSize: 12,
+        marginTop: 5,
+        color: '#666',
+    },
+    swithButton: {
+        backgroundColor: '#FFF',
+        padding: 12,
+        borderRadius: 10,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: Colors.border,
+        alignItems: 'center',
+        marginTop: 20
+    }
+
 
 })
