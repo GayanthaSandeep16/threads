@@ -3,6 +3,8 @@ import {DMSans_700Bold, useFonts} from "@expo-google-fonts/dm-sans";
 import {Text, View, StyleSheet, Image, ScrollView, TouchableOpacity} from "react-native";
 import {Colors} from "react-native/Libraries/NewAppScreen";
 import {Ionicons} from "@expo/vector-icons";
+import {useQuery} from "convex/react";
+import {api} from "@/convex/_generated/api";
 
 export default function Index() {
     const [ontsLoaded] = useFonts({
@@ -10,6 +12,9 @@ export default function Index() {
     });
 
     const {startSSOFlow} = useSSO();
+
+    const data = useQuery(api.users.getAllUsers);
+    console.log(`users`, data);
 
     const handleInstagramLogin = async () => {
         try {
