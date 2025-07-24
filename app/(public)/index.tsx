@@ -14,7 +14,7 @@ export default function Index() {
     const {startSSOFlow} = useSSO();
 
     const data = useQuery(api.users.getAllUsers);
-    console.log(`users`, data);
+    //console.log(`users`, data);
 
     const handleInstagramLogin = async () => {
         try {
