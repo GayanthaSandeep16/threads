@@ -74,15 +74,10 @@ const Layout = () => {
                 ),
             }}/>
             <Tabs.Screen name={"profile"} options={{
-                headerShown: true,
+                headerShown: false,
                 title: 'Profile',
                 tabBarIcon: ({color, size, focused}) => (
                     <Ionicons name={focused ? 'person' : 'person-outline'} color={color} size={size}/>
-                ),
-                headerRight: () => (
-                    <TouchableOpacity>
-                        <Ionicons name='log-out-outline' size={24} color={'black'} onPress={() => signOut()}/>
-                    </TouchableOpacity>
                 ),
             }}/>
         </Tabs>
