@@ -39,3 +39,5 @@ yarn-error.*
 .env
 
 app-example
+
+.env.local
